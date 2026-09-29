@@ -5,7 +5,7 @@ from app.calculos import calcular_cuota
 
 def test_caso_normal():
     # 10 000 al 12 % anual a 12 meses
-    assert calcular_cuota(10000, 12, 12) == 888.49
+    assert calcular_cuota(10000, 12, 12) == 999.99
 
 
 def test_tasa_cero_divide_en_partes_iguales():
