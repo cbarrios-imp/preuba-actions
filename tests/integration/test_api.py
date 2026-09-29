@@ -12,7 +12,9 @@ def client(tmp_path, monkeypatch):
 
 
 def test_crear_y_consultar(client):
-    r = client.post("/prestamos", json={"monto": 10000, "tasa_anual": 12, "plazo_meses": 12})
+    r = client.post(
+        "/prestamos", json={"monto": 10000, "tasa_anual": 12, "plazo_meses": 12}
+    )
     assert r.status_code == 201
     creado = r.json()
     assert creado["cuota_mensual"] == 888.49

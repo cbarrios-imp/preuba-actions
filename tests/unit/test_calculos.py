@@ -23,7 +23,10 @@ def test_redondeo_a_dos_decimales():
     assert round(cuota, 2) == cuota
 
 
-@pytest.mark.parametrize("monto,tasa,plazo", [(0, 10, 12), (-100, 10, 12), (1000, 10, 0), (1000, 10, -3), (1000, -1, 12)])
+@pytest.mark.parametrize(
+    "monto,tasa,plazo",
+    [(0, 10, 12), (-100, 10, 12), (1000, 10, 0), (1000, 10, -3), (1000, -1, 12)],
+)
 def test_datos_invalidos(monto, tasa, plazo):
     with pytest.raises(ValueError):
         calcular_cuota(monto, tasa, plazo)

@@ -30,7 +30,9 @@ class PrestamoOut(PrestamoIn):
 @app.post("/prestamos", response_model=PrestamoOut, status_code=201)
 def crear_prestamo(datos: PrestamoIn):
     cuota = calcular_cuota(datos.monto, datos.tasa_anual, datos.plazo_meses)
-    prestamo_id = db.guardar_prestamo(datos.monto, datos.tasa_anual, datos.plazo_meses, cuota)
+    prestamo_id = db.guardar_prestamo(
+        datos.monto, datos.tasa_anual, datos.plazo_meses, cuota
+    )
     return {"id": prestamo_id, **datos.model_dump(), "cuota_mensual": cuota}
 
 

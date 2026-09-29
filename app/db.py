@@ -27,7 +27,9 @@ def init_db() -> None:
         )
 
 
-def guardar_prestamo(monto: float, tasa_anual: float, plazo_meses: int, cuota: float) -> int:
+def guardar_prestamo(
+    monto: float, tasa_anual: float, plazo_meses: int, cuota: float
+) -> int:
     with _conectar() as conn:
         cur = conn.execute(
             "INSERT INTO prestamos (monto, tasa_anual, plazo_meses, cuota_mensual) VALUES (?, ?, ?, ?)",
@@ -38,5 +40,7 @@ def guardar_prestamo(monto: float, tasa_anual: float, plazo_meses: int, cuota: f
 
 def obtener_prestamo(prestamo_id: int) -> dict | None:
     with _conectar() as conn:
-        fila = conn.execute("SELECT * FROM prestamos WHERE id = ?", (prestamo_id,)).fetchone()
+        fila = conn.execute(
+            "SELECT * FROM prestamos WHERE id = ?", (prestamo_id,)
+        ).fetchone()
     return dict(fila) if fila else None
