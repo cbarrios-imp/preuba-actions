@@ -16,3 +16,8 @@ def calcular_cuota(monto: float, tasa_anual: float, plazo_meses: int) -> float:
     i = tasa_anual / 100 / 12
     cuota = monto * i / (1 - (1 + i) ** -(plazo_meses + 1))
     return round(cuota, 2)
+
+
+def depurar(x):
+    breakpoint()
+    return x
